@@ -1,0 +1,549 @@
+
+
+CLASS ESTUDIANTE
+
+public class Estudiante {
+
+
+    private String nombre;
+    private   String apellido;
+    private String curso;
+    private  double calificacion;
+
+    public Estudiante() {
+    }
+
+    public Estudiante(String nombre, String apellido, String curso, double calificacion) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.curso = curso;
+        this.calificacion = calificacion;
+    }
+
+
+    public String nombre() {
+        return nombre;
+    }
+
+    public Estudiante setNombre(String nombre) {
+        this.nombre = nombre;
+        return this;
+    }
+
+    public String apellido() {
+        return apellido;
+    }
+
+    public Estudiante setApellido(String apellido) {
+        this.apellido = apellido;
+        return this;
+    }
+
+    public String curso() {
+        return curso;
+    }
+
+    public Estudiante setCurso(String curso) {
+        this.curso = curso;
+        return this;
+    }
+
+    public double calificacion() {
+        return calificacion;
+    }
+
+    public Estudiante setCalificacion(double calificacion) {
+        this.calificacion = calificacion;
+        return this;
+    }
+
+    public void mostrarinfo() {
+        System.out.println("Apellido: "+this.apellido+ "; Nombre: "+this.nombre + "; curso: " + this.curso + "; nota " + this.calificacion);
+
+
+    }
+
+  public void subirCalificacion(double puntos){
+      if ((puntos>0)) { this.calificacion = this.calificacion+puntos;
+          if (this.calificacion >10) {this.calificacion=10;
+
+          }
+
+
+  }else {
+          System.out.println("te has equivacado, colocaste un valor negativo");}
+
+  }
+
+
+  public void bajarCalificacion(double puntos){
+      if (puntos >0) {this.calificacion=this.calificacion-puntos;
+          if (this.calificacion <0 ) { this.calificacion=0;
+
+          }
+
+      }else {
+          System.out.println("colocaste un numero negativo");
+      }
+  }
+
+}
+MAIN
+
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+public class Main {
+    public static void main(String[] args) {
+/* Kata 1: Registro de Estudiantes (Nivel Básico)
+Enunciado
+Imagina que estás desarrollando un sistema de gestión de estudiantes para una plataforma
+de cursos.
+Debes modelar la clase Estudiante con los siguientes atributos y métodos:
+Atributos:
+nombre (String)
+apellido (String)
+2
+TECNICATURA UNIVERSITARIA
+EN PROGRAMACIÓN
+A DISTANCIA
+curso (String)
+calificacion (double)
+Métodos:
+mostrarInfo(): Muestra la información del estudiante
+(apellido+nombre+curso+calificación)
+subirCalificacion(double puntos): Aumenta la calificación del estudiante en la cantidad
+de puntos especificada (máximo 10).
+bajarCalificacion(double puntos): Disminuye la calificación del estudiante (mínimo 0).
+ 
+ 
+ Tarea a realizar
+● Crear una instancia de la clase Estudiante con un apellido, nombre, curso y calificación
+● Mostrar la información del estudiante: apellido, nombre, curso y calificación
+● Aumentar y disminuir la calificación con subirCalificacion() y bajarCalificacion().  */
+
+  Estudiante  estudiante1 = new Estudiante("Miguel","Baggio","comision 4",9);
+  Estudiante estudiante2= new Estudiante("Juan","Flores","comision3",7);
+  estudiante2.mostrarinfo();
+  estudiante1.mostrarinfo();
+
+  estudiante2.setCalificacion(6);
+  estudiante2.mostrarinfo();
+  estudiante2.subirCalificacion(3);
+ estudiante2.mostrarinfo();
+ estudiante1.bajarCalificacion(1);
+ estudiante1.mostrarinfo();
+ estudiante2.bajarCalificacion(55);
+ estudiante2.mostrarinfo();
+
+    }
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+KATA2
+
+Main
+
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+public class Main {
+    public static void main(String[] args) {
+
+
+     Mascota mascota1 = new Mascota("pancha","perro",12);
+     Mascota mascota2 = new Mascota("Chinchi","Gato",2);
+     Mascota mascota3= new Mascota("Gomensoro","Perro",14);
+     Mascota mascota4= new Mascota("Fiorela","Perro",6);
+     Mascota mascota5= new Mascota("Carucha","Perro",11);
+     Mascota mascota6 = new Mascota("Quiqui","Ave",3);
+     Mascota mascota7 = new Mascota("lesa","perro",11);
+
+        mascota1.mostrar();
+        mascota2.mostrar();
+        mascota3.mostrar();
+        mascota4.mostrar();
+        mascota5.mostrar();
+        mascota6.mostrar();
+        mascota7.mostrar();
+        mascota3.cumplianios();
+        mascota4.cumplianios();
+        mascota3.mostrar();
+        mascota4.mostrar();
+
+
+
+        }
+
+}
+
+
+
+Clase Mascota
+
+public class Mascota {
+    private String nombre;
+    private String especie;
+    private int edad;
+
+    public Mascota() {
+    }
+
+    public Mascota(String nombre, String especie, int edad) {
+        this.nombre = nombre;
+        this.especie = especie;
+        this.edad = edad;
+    }
+
+    public String nombre() {
+        return nombre;
+    }
+
+    public Mascota setNombre(String nombre) {
+        this.nombre = nombre;
+        return this;
+    }
+
+    public String especie() {
+        return especie;
+    }
+
+    public Mascota setEspecie(String especie) {
+        this.especie = especie;
+        return this;
+    }
+
+    public int edad() {
+        return edad;
+    }
+
+    public Mascota setEdad(int edad) {
+        this.edad = edad;
+        return this;
+    }
+    public void cumplianios(){this.edad += 1;}
+
+public void mostrar(){
+    System.out.println("Nombre: " + this.nombre + "; Especie: "+ this.especie + "; Edad: "+ this.edad);
+}
+}
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------KATA3
+
+Main
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+public class Main {
+    public static void main(String[] args) {
+        /*Desarrolla una clase Libro para gestionar libros en una biblioteca.
+Para evitar cambios incorrectos, implementa encapsulamiento.
+● Atributos privados:
+título
+autor
+añoPublicacion.
+● Métodos públicos:
+getTitulo()
+getAutor()
+getAñoPublicacion().
+Método setAñoPublicacion(int nuevoAño), con validación: No se puede modificar si el
+año es menor a 1900 o mayor al año actual.
+ 
+ 
+ Tarea a realizar
+1. Crear un objeto de la clase Libro.
+2. Intentar modificar el año de publicación con un valor inválido y otro válido.
+3. Mostrar la información del libro:: título, autor, añoPublicacion. */
+Libro libro1 =new Libro("Hamlet","Sheskapare",1750);
+Libro libro2 = new Libro("Rayuela","Borges",1956);
+
+libro2.modAnioPublicacion(1985);
+libro2.mostrarTodo();
+libro1.modAnioPublicacion(1999);
+libro1.mostrarTodo();
+
+
+
+
+    }
+}
+class Libro 
+
+import java.time.LocalDateTime;
+
+public class Libro {
+    private String titulo;
+    private String autor;
+    private int anioPublicacion;
+
+    public Libro() {
+    }
+
+    public Libro(String titulo, String autor, int anioPublicacion) {
+        this.titulo = titulo;
+        this.autor = autor;
+        this.anioPublicacion = anioPublicacion;
+    }
+
+    public String titulo() {
+        return titulo;
+    }
+
+    public Libro setTitulo(String titulo) {
+        this.titulo = titulo;
+        return this;
+    }
+
+    public String autor() {
+        return autor;
+    }
+
+    public Libro setAutor(String autor) {
+        this.autor = autor;
+        return this;
+    }
+
+    public int anioPublicacion() {
+        return anioPublicacion;
+    }
+LocalDateTime fechaActual= LocalDateTime.now();
+    int anioActual= fechaActual.getYear();
+
+  public void modAnioPublicacion(int nuevoanio){
+      if (this.anioPublicacion >1900&& this.anioPublicacion<=anioActual) { this.anioPublicacion=nuevoanio;
+
+      }
+
+  }
+
+  public void mostrarTodo(){
+      System.out.println("TITULO: " + this.titulo+ ", AUTOR: " + this.autor+ ", Año: " + this.anioPublicacion);
+  }
+
+
+
+
+
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+KATA 4
+
+Main
+
+import java.time.LocalDateTime;
+
+public class Libro {
+    private String titulo;
+    private String autor;
+    private int anioPublicacion;
+
+    public Libro() {
+    }
+
+    public Libro(String titulo, String autor, int anioPublicacion) {
+        this.titulo = titulo;
+        this.autor = autor;
+        this.anioPublicacion = anioPublicacion;
+    }
+
+    public String titulo() {
+        return titulo;
+    }
+
+    public Libro setTitulo(String titulo) {
+        this.titulo = titulo;
+        return this;
+    }
+
+    public String autor() {
+        return autor;
+    }
+
+    public Libro setAutor(String autor) {
+        this.autor = autor;
+        return this;
+    }
+
+    public int anioPublicacion() {
+        return anioPublicacion;
+    }
+LocalDateTime fechaActual= LocalDateTime.now();
+    int anioActual= fechaActual.getYear();
+
+  public void modAnioPublicacion(int nuevoanio){
+      if (this.anioPublicacion >1900&& this.anioPublicacion<=anioActual) { this.anioPublicacion=nuevoanio;
+
+      }
+
+  }
+
+  public void mostrarTodo(){
+      System.out.println("TITULO: " + this.titulo+ ", AUTOR: " + this.autor+ ", Año: " + this.anioPublicacion);
+  }
+
+
+
+
+
+}
+
+Class Gallina
+
+public class Gallina {
+
+    private String idGallina;
+    private int edad;
+    private int huevosPuestos;
+
+    public Gallina() {
+    }
+
+    public Gallina(String idGallina, int edad, int huevosPuestos) {
+        this.idGallina = idGallina;
+        this.edad = edad;
+        this.huevosPuestos = huevosPuestos;
+    }
+
+    public String idGallina() {
+        return idGallina;
+    }
+
+    public Gallina setIdGallina(String idGallina) {
+        this.idGallina = idGallina;
+        return this;
+    }
+
+    public int edad() {
+        return edad;
+    }
+
+    public Gallina setEdad(int edad) {
+        this.edad = edad;
+        return this;
+    }
+
+    public int huevosPuestos() {
+        return huevosPuestos;
+    }
+
+    public Gallina setHuevosPuestos(int huevosPuestos) {
+        this.huevosPuestos = huevosPuestos;
+        return this;
+    }
+
+    public void ponerHuevo(){
+            this.huevosPuestos+=1;
+
+
+
+    }
+    public void envejecer(){this.edad +=1;}
+
+    public void mostrarEstado(){
+        System.out.println("idGallina: " + this.idGallina+ ", edad: "+ this.edad+ ", Huevos puestos: " + this.huevosPuestos);
+    }
+
+
+
+
+
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+kata5
+
+Main
+
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+public class Main {
+    public static void main(String[] args) {
+
+NaveEspacial nave1 = new NaveEspacial("apolo",50);
+
+nave1.avanzar(60);
+nave1.recargarCombustible(40);
+nave1.avanzar(60);
+nave1.mostrarEstado();
+
+
+
+
+    }
+}
+class NaveEspacial
+
+
+public class NaveEspacial {
+
+private String nombre;
+private int combustible;
+
+    public NaveEspacial() {
+    }
+
+    public NaveEspacial(String nombre, int combustible) {
+        this.nombre = nombre;
+        this.combustible = combustible;
+    }
+
+    public String nombre() {
+        return nombre;
+    }
+
+    public NaveEspacial setNombre(String nombre) {
+        this.nombre = nombre;
+        return this;
+    }
+
+    public int combustible() {
+        return combustible;
+    }
+
+    public NaveEspacial setCombustible(int combustible) {
+        this.combustible = combustible;
+        return this;
+    }
+
+    public void despegar(){
+        if (this.combustible>=10) {this.combustible-=10;
+
+        }else{
+            System.out.println("no puede despegar");
+        }
+
+
+
+
+     }
+    public void avanzar(int distancia) {
+
+        if (this.combustible>=distancia) { this.combustible -=distancia;
+
+        }else{
+            System.out.println("No puede avanzar");
+        }
+    }
+
+    public void recargarCombustible(int cantidad){
+        if ((this.combustible+cantidad)<=100) {this.combustible+=cantidad;
+
+        }else{
+            System.out.println("Se exede en combustible");
+        }
+
+
+    }
+    public void mostrarEstado(){
+        System.out.println("Nombre: "+this.nombre+"; Cantidad de combustible: "+this.combustible);
+
+
+    }
+
+
+
+
+}
+
+ 
+
+
+

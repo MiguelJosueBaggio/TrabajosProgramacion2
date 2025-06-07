@@ -1,0 +1,135 @@
+Trabajo Practico n 4
+Main
+
+public class Main {
+    public static void main(String[] args) {
+        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
+        // to see how IntelliJ IDEA suggests fixing it.
+
+        Empleado empleado1 = new Empleado("Miguel Baggio", "Produccion");
+        empleado1.mostrarTodo();
+        System.out.println("los numeros de empleados es: " + Empleado.totalEmpleados() );
+        Empleado empleado2 = new Empleado(25,"Juan Flores","vendedor",700);
+        empleado2.mostrarTodo();
+        System.out.println("los numeros de empleados es: " + Empleado.totalEmpleados() );
+         empleado1.actualizarSalario(35);
+        empleado1.mostrarTodo();
+        empleado2.actualizarSalario();
+        empleado2.mostrarTodo();
+        System.out.println(empleado2);
+        Empleado empleado3 = new Empleado(29,"Alberto Gastino","Administrativo",900);
+        empleado3.actualizarSalario(5);
+        Empleado.mostrarTotalEmpleados();
+        System.out.println(empleado3);
+
+
+
+
+    }
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+clase Empleado
+
+
+import java.util.Random;
+
+public class Empleado {
+
+    private int id;
+    private String nombre;            //Creamos los atributos
+    private String puesto;
+    private double salario;
+    private static int totalEmpleados=0; //Atributo estatico para que se axclusivo de la clase y no la instancia
+
+
+    public Empleado(int id, String nombre, String puesto, double salario) {
+        this.id = id;
+        this.nombre = nombre; //Constructo inicial que tiene 4 parametertos
+        this.puesto = puesto;
+        this.salario = salario;
+        Empleado.totalEmpleados+=1;
+    }
+Random random = new Random();
+
+    public Empleado(String nombre, String puesto) {   //constructo aalternativo que toma solo dos parametros y los demas atributos , uno es cargado por defecto y el otro un numero random
+        this.nombre = nombre;
+        this.puesto = puesto;
+        this.id = random.nextInt(0,100);
+        salario=1000;
+        totalEmpleados+=1;
+
+    }
+
+    public int id() {
+        return id;
+    }
+
+    public Empleado setId(int id) {
+        this.id = id;
+        return this;
+    }
+
+    public String nombre() {
+        return nombre;
+    }
+
+    public Empleado setNombre(String nombre) {
+        this.nombre = nombre;
+        return this;
+    }
+
+    public String puesto() {
+        return puesto;
+    }
+
+    public Empleado setPuesto(String puesto) {
+        this.puesto = puesto;
+        return this;
+    }
+
+    public double salario() {
+        return salario;
+    }
+
+    public Empleado setSalario(double salario) {
+        this.salario = salario;
+        return this;
+    }
+
+    public static int totalEmpleados() {
+        return totalEmpleados;
+    }
+
+    public static void setTotalEmpleados(int totalEmpleados) {
+        Empleado.totalEmpleados = totalEmpleados;
+    }
+
+    public void mostrarTodo(){
+        System.out.println(" id : "+this.id+" ;  Nombre: " + this.nombre + "; Puesto: "+this.puesto + "; Salario: " + this.salario);
+    }
+public void actualizarSalario(double porcentaje){
+        this.salario= this.salario + this.salario*porcentaje/100;
+
+
+}
+public void actualizarSalario(){//sobrecarga de funciones
+        actualizarSalario(20);
+
+
+}
+public static void mostrarTotalEmpleados(){
+    System.out.println("El total de empelados es: "+Empleado.totalEmpleados);
+}
+
+    @Override
+    public String toString() {
+        return "Empleado{" +
+                "nombre='" + nombre + '\'' +
+                ", puesto='" + puesto + '\'' +
+                ", salario=" + salario +
+
+                ", id=" + id +
+                '}';
+    }
+}
+

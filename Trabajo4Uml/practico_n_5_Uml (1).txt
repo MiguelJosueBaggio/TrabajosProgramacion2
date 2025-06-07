@@ -1,0 +1,316 @@
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+public class Main {
+    public static void main(String[] args) {
+        Usuario u1 = new Usuario(1,"Miguel Baggio","baa@tg");
+        Usuario u2 = new Usuario(2,"Itati Mealla","rgh@hj");
+
+        Tecnico t1 = new Tecnico(235,"Nahuel Baggio","hardware");
+        Tecnico t2 = new Tecnico(224,"Alberto Gastino","Sortware");
+
+        TicketSoporte ticket1 = new TicketSoporte(14,"12-10","15/10",u2);
+        TicketSoporte ticket2= new TicketSoporte(15,"Explosion monitor","28/12",u1);
+        TicketSoporte ticket3= new TicketSoporte(16,"Mouse electrificado","14/9",u2);
+
+        SistemaSoporte s1 = new SistemaSoporte(25);
+      s1.agregarTecnico(t1,ticket2);
+      s1.agregarTecnico(t2,ticket1);
+      s1.agregarTecnico(t1,ticket3);
+      ticket1.cerrarTicket();
+        s1.agregarTickets(ticket1);
+        s1.agregarTickets(ticket2);
+        s1.agregarTickets(ticket3);
+        s1.mostrarTickets();
+        s1.mostrarTicketsAbiertos();
+        s1.mostrarTicketsCerrados();
+
+
+    }
+}
+
+----------------------------------------------------------
+import java.util.ArrayList;
+
+
+public class SistemaSoporte {
+private int idSis;
+private Tecnico tecnico;
+ArrayList<TicketSoporte> ticketSoportes = new ArrayList<>();
+
+    public SistemaSoporte(int id) {
+        this.idSis = id;                                //Conntructo
+        this.tecnico=tecnico;
+        this.ticketSoportes = new ArrayList<>();          //Array de los tickets
+    }
+
+
+    
+  public void agregarTickets(TicketSoporte ticket){
+
+        this.ticketSoportes.add(ticket);  //Agregar tickets a alos array list
+  }
+    public void agregarTecnico(Tecnico tecnico, TicketSoporte ticket){
+        ticket.tecnico =tecnico; //suma el tecnico al ticker desde el sistema soporte
+
+    }
+
+ public void mostrarTickets()
+ { for (TicketSoporte ticket: ticketSoportes){
+     System.out.println(ticket);
+
+ }
+
+
+
+
+
+
+ }
+    public void mostrarTicketsAbiertos() {
+        System.out.println("Los tickets abiertos son: ");
+        for (TicketSoporte ticket : ticketSoportes) {
+            if (ticket.estado().equals("abierto")) {
+                System.out.println(ticket);
+
+            }
+
+
+        }
+    }
+
+    public void mostrarTicketsCerrados() {
+        System.out.println("Los tickets Cerrados son: ");
+        for (TicketSoporte ticket : ticketSoportes) {
+            if (ticket.estado().equals("cerrado")) {
+                System.out.println(ticket);
+
+            }
+
+
+        }
+    }
+
+}
+
+
+
+
+
+---------------------------------------------------------------------------------
+public class Tecnico {
+
+    private int id;
+    private String Nombre;
+    private String especialidad;
+
+    public Tecnico() {
+    }
+
+    public Tecnico(int id, String nombre, String especialidad) {
+        this.id = id;
+        Nombre = nombre;
+        this.especialidad = especialidad;
+    }
+
+    public int id() {
+        return id;
+    }
+
+    public Tecnico setId(int id) {
+        this.id = id;
+        return this;
+    }
+
+    public String Nombre() {
+        return Nombre;
+    }
+
+    public Tecnico setNombre(String nombre) {
+        Nombre = nombre;
+        return this;
+    }
+
+    public String especialidad() {
+        return especialidad;
+    }
+
+    public Tecnico setEspecialidad(String especialidad) {
+        this.especialidad = especialidad;
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Tecnico{" +
+                "id=" + id +
+                ", Nombre='" + Nombre + '\'' +
+                ", especialidad='" + especialidad + '\'' +
+                '}';
+    }
+}
+--------------------------------------------------------------------------------------------------------------
+public class TicketSoporte {
+    private int id;
+    private String decripcion;
+    private String estado;
+    private String fechaCreacion;
+    private Usuario usuario;
+    public Tecnico tecnico;
+
+
+    public TicketSoporte() {
+    }
+
+    public TicketSoporte(int id, String decripcion, String fechaCreacion) {
+        this.id = id;
+        this.decripcion = decripcion;
+        this.fechaCreacion = fechaCreacion;
+        this.estado = "abierto ";
+        this.usuario = null;
+    }
+
+    public TicketSoporte(int id, String decripcion, String fechaCreacion, Usuario usuario) {
+        this.id = id;
+        this.decripcion = decripcion;
+        this.fechaCreacion = fechaCreacion;
+        this.usuario = usuario;
+        this.estado = "abierto";
+    }
+
+    public Tecnico tecnico() {
+        return tecnico;
+    }
+
+    public TicketSoporte setTecnico(Tecnico tecnico) {
+        this.tecnico = tecnico;
+        return this;
+    }
+
+    public int getid() {
+        return id;
+    }
+
+    public TicketSoporte setId(int id) {
+        this.id = id;
+        return this;
+    }
+
+    public String decripcion() {
+        return decripcion;
+    }
+
+    public TicketSoporte setDecripcion(String decripcion) {
+        this.decripcion = decripcion;
+        return this;
+    }
+
+    public String estado() {
+        return estado;
+    }
+
+    public TicketSoporte setEstado(String estado) {
+        this.estado = estado;
+        return this;
+    }
+
+    public String fechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public TicketSoporte setFechaCreacion(String fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+        return this;
+    }
+
+    public Usuario usuario() {
+        return usuario;
+    }
+
+    public TicketSoporte setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+        return this;
+    }
+
+
+
+
+
+    public void cerrarTicket() {
+        this.estado = "cerrado";
+    }
+
+    public void mostrarDetalle() {
+        if (this.usuario == null) {
+            System.out.println("Id: " + this.id + "; decripcion: " + this.decripcion + "; Fecha de creacion: " + this.fechaCreacion + "El usuario es: Anonymus Estado: " + this.estado);
+        } else {
+            System.out.println("Id: " + this.id + "; decripcion: " + this.decripcion + "; Fecha de creacion: " + this.fechaCreacion + "El usuario es: " + usuario + "; Estado: " + this.estado);
+        }
+
+    }
+
+    @Override
+    public String toString() {
+        return "TicketSoporte{" +
+                "id=" + id +
+                ", decripcion='" + decripcion + '\'' +
+                ", estado='" + estado + '\'' +
+                ", fechaCreacion='" + fechaCreacion + '\'' +
+                ", usuario=" + usuario +
+                ", tecnico=" + tecnico +
+                '}';
+    }
+}
+
+
+------------------------------------------------------------------------------------------------------------
+public class Usuario {
+
+    private int id ;
+    private String nombre;
+    private String email;
+
+    public Usuario(int id, String nombre, String email) {
+        this.id = id;
+        this.nombre = nombre;
+        this.email = email;
+    }
+
+    public int id() {
+        return id;
+    }
+
+    public Usuario setId(int id) {
+        this.id = id;
+        return this;
+    }
+
+    public String nombre() {
+        return nombre;
+    }
+
+    public Usuario setNombre(String nombre) {
+        this.nombre = nombre;
+        return this;
+    }
+
+    public String email() {
+        return email;
+    }
+
+    public Usuario setEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "nombre='" + nombre + '\'' +
+                ", email='" + email + '\'' +
+                ", id=" + id +
+                '}';
+    }
+}
+
+
